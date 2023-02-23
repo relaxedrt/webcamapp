@@ -8,11 +8,16 @@ img = cv2.imread("npfoto/formas.jpg")
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 #img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV_FULL)
 #ELEGIMOS EL UMBRAL DEL COLOR VERDE EN HSV
-umbral_bajo = (170,100,100)
-umbral_alto = (179,255,255)
+umbral_bajo1 = (170,100,100)
+umbral_alto1 = (179,255,255)
+
+umbral_bajo2 = (0,100,100)
+umbral_alto2 = (10,255,255)
 
 #Creamos una mascara y filtramos la imagen original
-mask = cv2.inRange(img_hsv, umbral_bajo, umbral_alto)
+mask1 = cv2.inRange(img_hsv, umbral_bajo1, umbral_alto1)
+mask2 = cv2.inRange(img_hsv, umbral_bajo2, umbral_alto2)
+mask = mask1 + mask2
 res = cv2.bitwise_and(img, img ,mask = mask)
 
 #Mostramos las imagenes por pantalla
