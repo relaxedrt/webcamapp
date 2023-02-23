@@ -12,9 +12,9 @@ name = fecha_actual.strftime('%Y%m%d%H%M')
 #Gestionamos el resultado
 
 if leido == True:
-    cv2.imwrite(f"npfoto\{name}.png", frame)
+    cv2.imwrite(f"npfoto/{name}.png", frame)
     print("Foto tomada correctamente")
 else:
     print("Error al acceder a la camara")
-#Cerramos la webcam
+#Cerramos la webcams
 cap.release()
