@@ -11,8 +11,9 @@ leido, frame = cam.read()
 #Evaluamos si se consiguio sacar la foto y la mostramos
 if leido == True:
     #Mostramos el resultado
+    img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     print("Foto tomada correctamente")
-    plt.imshow(frame)
+    plt.imshow(img)
     plt.show()
 else:
     print("Error al acceder a la camara")
