@@ -2,7 +2,7 @@
 import cv2
 import matplotlib.pyplot as plt
 
-#CREAMOS LA VARIABLE DE LA IMAGEN BASE
+#CREAMOS LA VARIABLE DE LA IMAGEN BASEfire
 img = cv2.imread("npfoto/formas.jpg")
 #LA CONVERTIMOS A HSV
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -25,4 +25,4 @@ plt.subplot(1, 2, 1)
 plt.imshow(mask, cmap="gray")
 plt.subplot(1,2,2)
 plt.imshow(res)
-plt.show()
+plt.show()  

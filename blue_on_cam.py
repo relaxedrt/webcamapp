@@ -1,6 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
-
 #Abrimos la camara
 cam = cv2.VideoCapture(0)
 
@@ -14,9 +12,10 @@ while True:
 		mask = cv2.inRange(img, umbral_bajo, umbral_alto)
 		res = cv2.bitwise_and(img, img ,mask = mask)
 		res_rgb = cv2.cvtColor(res, cv2.COLOR_HSV2BGR)
-        contours, hierachy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+		contorno, hierachy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 		#Mostramos las imagenes por pantalla
-        cv2.imshow('res', res_rgb)
+		cv2.drawContours(res_rgb, contorno, -1, (0,255,0), 3)
+		cv2.imshow('res', res_rgb)
 		if cv2.waitKey(1) & 0xFF == ord('s'):
 			break
 	else:
