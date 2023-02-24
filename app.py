@@ -9,18 +9,27 @@ cam = cv2.VideoCapture(0)
 leido, frame = cam.read()
 
 #ELEGIMOS EL UMBRAL DEL COLOR AZUL EN HSV
-umbral_bajo1 = (85,100,20)
-umbral_alto1 = (135,255,255)
+umbral_bajo1 = (170,100,100)
+umbral_alto1 = (179,255,255)
 
+umbral_bajo2 = (0,100,100)
+umbral_alto2 = (10,255,255)
 #Evaluamos si se consiguio sacar la foto y la mostramos
 if leido == True:
     #Mostramos el resultado
     print("Foto tomada correctamente.")
     print("Foto siendo procesada.")
-    img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    img = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     mask1 = cv2.inRange(img, umbral_bajo1, umbral_alto1)
-    res = cv2.bitwise_and(img, img ,mask = mask1)
-    plt.imshow(res)
+    mask2 = cv2.inRange(img, umbral_bajo2, umbral_alto2)
+    mask = mask1 + mask2
+    res = cv2.bitwise_and(img, img ,mask = mask)
+    res_rgb = cv2.cvtColor(res, cv2.COLOR_HSV2RGB)
+    #Mostramos las imagenes por pantalla
+    plt.subplot(1, 2, 1)
+    plt.imshow(mask1, cmap="gray")
+    plt.subplot(1,2,2)
+    plt.imshow(res_rgb)
     plt.show()
     print("Resultado mostrado.")
 else:
