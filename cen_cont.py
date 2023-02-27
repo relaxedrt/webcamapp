@@ -29,5 +29,5 @@ while True:
     cv2.imshow('res', res_rgb)
     if cv2.waitKey(1) & 0xFF == ord('s'):
         break
-print(f"x: {cx}\n y:{cy}")
+
 
