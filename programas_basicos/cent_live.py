@@ -28,7 +28,6 @@ while True:
 				cv2.circle(res_rgb, (cx,cy), 7, (0,0,255), -1)
 				cv2.putText(res_rgb, f"x: {cx} y:{cy}", (cx -20, cy -20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 2)
 				cv2.drawContours(res_rgb, contorno, -1, (0,255,0), 3)
-		cv2.imshow('res', mask)
-		print(f"Momento = {M}")
+		cv2.imshow('res', res_rgb)
 	if cv2.waitKey(1) & 0xFF == ord('s'):
 		break
