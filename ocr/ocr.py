@@ -2,7 +2,7 @@ import cv2
 import easyocr
 
 #Establecemos los idiomas que usaremos para el easyocr
-reader = easyocr.Reader(["es"], gpu=True)
+reader = easyocr.Reader(["es"], gpu=False)
 
 #Importamos una foto
 img = cv2.imread("npfoto/lectura.jpeg")
