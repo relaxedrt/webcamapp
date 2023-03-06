@@ -4,10 +4,14 @@ import easyocr
 #Establecemos los idiomas que usaremos para el easyocr
 reader = easyocr.Reader(["es"], gpu=True)
 
-#Importamos una foto
-img = cv2.imread("npfoto/lectura.jpeg")
+#Nos conectamos a la camara y echamos una foto
+cam = cv2.VideoCapture(0)
+conf, img = cam.read()
 
-#Extraemos el texto de la imagen
+if  conf == False:
+    print(f"Hubo un error con la webcam.")
+    exit
+
 result = reader.readtext(img, paragraph=False)
 for res in result:
     print("res:", res)
